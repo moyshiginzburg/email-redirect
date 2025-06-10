@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting to Email</title>
+  <script>
+    window.onload = function () {
+      const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent);
+
+      const gmailLink = "https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&su=%D7%A7%D7%98%D7%9C%D7%95%D7%92&to=etih4002%2Bcatalog%40gmail.com";
+      const mailtoLink = "mailto:etih4002+catalog@gmail.com?subject=%D7%A7%D7%98%D7%9C%D7%95%D7%92";
+
+      // ניתוב לפי סוג המכשיר
+      if (isMobile) {
+        window.location.href = mailtoLink;
+      } else {
+        try {
+          // ניסיון לפתוח ב־Gmail במחשב
+          window.location.href = gmailLink;
+        } catch (e) {
+          // במקרה של שגיאה, fallback ל־mailto
+          window.location.href = mailtoLink;
+        }
+      }
+    };
+  </script>
+</head>
+<body>
+  <p>If you are not redirected, <a href="mailto:etih4002+catalog@gmail.com?subject=קטלוג">click here</a>.</p>
+</body>
+</html>
